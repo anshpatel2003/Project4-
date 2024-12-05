@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     android:padding="16dp">
 
     <LinearLayout
@@ -87,51 +88,24 @@
             android:textColor="#000000"
             android:textSize="14sp" />
 
-        <!-- Available Toppings -->
+        <!-- Toppings Section -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Available Toppings"
-            android:layout_marginBottom="8dp"
-            android:textSize="16sp" />
+            android:text="Select Toppings:"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
 
-        <ListView
-            android:id="@+id/lvAvailableToppings"
+        <LinearLayout
+            android:id="@+id/toppingsContainer"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:background="#f5f5f5"
-            android:layout_marginBottom="16dp" />
-
-        <Button
-            android:id="@+id/btnAddTopping"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add Topping"
-            android:layout_marginBottom="8dp"
-            android:layout_gravity="center_horizontal" />
-
-        <!-- Selected Toppings -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Selected Toppings"
-            android:layout_marginBottom="8dp"
-            android:textSize="16sp" />
-
-        <ListView
-            android:id="@+id/lvSelectedToppings"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:background="#f5f5f5"
-            android:layout_marginBottom="16dp" />
-
-        <Button
-            android:id="@+id/btnRemoveTopping"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Remove Topping"
-            android:layout_marginBottom="16dp"
-            android:layout_gravity="center_horizontal" />
+            android:padding="8dp"
+            android:layout_marginBottom="16dp">
+            <!-- CheckBox for each topping will be added programmatically -->
+        </LinearLayout>
 
         <!-- Pizza Image -->
         <ImageView
@@ -139,8 +113,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginBottom="16dp"
-            android:scaleType="centerCrop"
-            />
+            android:scaleType="centerCrop" />
 
         <!-- Pizza Price -->
         <TextView
@@ -154,11 +127,12 @@
             android:id="@+id/priceTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:background="#EEEEEE"
             android:padding="8dp"
             android:text="$0.00"
-            android:textSize="14sp"
-            android:layout_marginBottom="16dp" />
+            android:textColor="#000000"
+            android:textSize="14sp" />
 
         <!-- Add to Order Button -->
         <Button
