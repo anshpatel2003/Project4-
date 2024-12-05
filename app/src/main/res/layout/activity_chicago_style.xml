@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:orientation="vertical">
 
         <!-- Title -->
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/chicago_style_pizza"
+            android:text="Chicago Style Pizza"
             android:textSize="36sp"
             android:textColor="#000000"
             android:layout_gravity="center_horizontal"
@@ -24,7 +25,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/select_pizza_type"
+            android:text="Select Pizza Type:"
             android:textSize="16sp"
             android:layout_marginBottom="8dp" />
 
@@ -32,13 +33,14 @@
             android:id="@+id/spinnerPizzaType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"
+            android:minHeight="48dp" />
 
         <!-- Pizza Size Radio Group -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/select_size"
+            android:text="Select Size:"
             android:textSize="16sp"
             android:layout_marginBottom="8dp" />
 
@@ -53,145 +55,91 @@
                 android:id="@+id/rbSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/small" />
+                android:text="Small" />
 
             <RadioButton
                 android:id="@+id/rbMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/medium" />
+                android:text="Medium" />
 
             <RadioButton
                 android:id="@+id/rbLarge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/large" />
+                android:text="Large" />
         </RadioGroup>
 
-        <!-- Crust Display -->
+        <!-- Crust Type -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/crust"
+            android:text="Crust:"
             android:textSize="16sp"
             android:layout_marginBottom="8dp" />
 
-        <EditText
-            android:id="@+id/etCrust"
+        <TextView
+            android:id="@+id/crustTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:focusable="false"
-            android:background="@android:color/transparent"
+            android:layout_marginBottom="16dp"
+            android:background="#EEEEEE"
+            android:padding="8dp"
             android:textColor="#000000"
-            android:layout_marginBottom="16dp" />
+            android:textSize="14sp" />
+
+        <!-- Toppings Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Toppings:"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <LinearLayout
+            android:id="@+id/toppingsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#f5f5f5"
+            android:padding="8dp"
+            android:layout_marginBottom="16dp">
+            <!-- CheckBox for each topping will be added programmatically -->
+        </LinearLayout>
 
         <!-- Pizza Image -->
         <ImageView
-            android:id="@+id/ivPizza"
-            android:layout_width="300dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="16dp"
-            android:contentDescription="@string/pizza_image"
-            android:adjustViewBounds="true" />
-
-        <!-- Toppings List and Buttons -->
-        <LinearLayout
+            android:id="@+id/pizzaImageView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal"
-            android:layout_marginBottom="16dp">
-
-            <!-- Available Toppings RecyclerView -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/available_toppings"
-                    android:layout_gravity="center_horizontal"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="8dp" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvAvailableToppings"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_marginBottom="8dp" />
-            </LinearLayout>
-
-            <!-- Add/Remove Buttons -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/btnAddTopping"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/move_to_selected"
-                    android:layout_marginBottom="8dp" />
-
-                <Button
-                    android:id="@+id/btnRemoveTopping"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/move_to_available" />
-            </LinearLayout>
-
-            <!-- Selected Toppings RecyclerView -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/selected_toppings"
-                    android:layout_gravity="center_horizontal"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="8dp" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvSelectedToppings"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_marginBottom="8dp" />
-            </LinearLayout>
-        </LinearLayout>
+            android:layout_height="200dp"
+            android:layout_marginBottom="16dp"
+            android:scaleType="centerCrop" />
 
         <!-- Pizza Price -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/pizza_price"
+            android:text="Price:"
             android:textSize="16sp"
             android:layout_marginBottom="8dp" />
 
-        <EditText
-            android:id="@+id/etPrice"
+        <TextView
+            android:id="@+id/priceTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:focusable="false"
-            android:background="@android:color/transparent"
+            android:layout_marginBottom="16dp"
+            android:background="#EEEEEE"
+            android:padding="8dp"
+            android:text="$0.00"
             android:textColor="#000000"
-            android:layout_marginBottom="16dp" />
+            android:textSize="14sp" />
 
         <!-- Add to Order Button -->
         <Button
             android:id="@+id/btnAddToOrder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/add_to_order"
+            android:text="Add to Order"
             android:background="@color/design_default_color_primary"
             android:textColor="#FFFFFF" />
     </LinearLayout>
