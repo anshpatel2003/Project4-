@@ -15,7 +15,7 @@
             android:id="@+id/tvTitleNY"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New York Style Pizza"
+            android:text="@string/ny_style_pizza"
             android:textSize="36sp"
             android:textColor="@color/black"
             android:layout_gravity="center_horizontal"
@@ -25,7 +25,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select Pizza Type:"
+            android:text="@string/select_pizza_type"
             android:textSize="16sp"
             android:textColor="@color/black"
             android:layout_marginBottom="8dp" />
@@ -40,7 +40,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select Size:"
+            android:text="@string/select_size"
             android:textSize="16sp"
             android:textColor="@color/black"
             android:layout_marginBottom="8dp" />
@@ -58,28 +58,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text="Small" />
+                android:text="@string/small" />
 
             <RadioButton
                 android:id="@+id/rbMediumNY"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text="Medium" />
+                android:text="@string/medium" />
 
             <RadioButton
                 android:id="@+id/rbLargeNY"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text="Large" />
+                android:text="@string/large" />
         </RadioGroup>
 
         <!-- Crust Display -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Crust:"
+            android:text="@string/crust"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:layout_marginBottom="8dp" />
@@ -101,7 +101,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp"
             android:adjustViewBounds="true"
-            android:contentDescription="Pizza Image" />
+            android:contentDescription="@string/pizza_image" />
 
         <!-- Toppings List and Buttons -->
         <LinearLayout
@@ -123,7 +123,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Available Toppings"
+                    android:text="@string/available_toppings"
                     android:textColor="@color/black"
                     android:layout_gravity="center_horizontal"
                     android:textSize="16sp"
@@ -148,13 +148,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text=">>" />
+                    android:text="@string/move_to_selected" />
 
                 <Button
                     android:id="@+id/btnRemoveToppingNY"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="arrows" />
+                    android:text="@string/move_to_available" />
             </LinearLayout>
 
             <!-- Selected Toppings RecyclerView -->
@@ -167,7 +167,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Selected Toppings"
+                    android:text="@string/selected_toppings"
                     android:layout_gravity="center_horizontal"
                     android:textSize="16sp"
                     android:layout_marginBottom="8dp" />
@@ -184,7 +184,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pizza Price $"
+            android:text="@string/pizza_price"
             android:textSize="16sp"
             android:layout_marginBottom="8dp" />
 
@@ -202,7 +202,7 @@
             android:id="@+id/btnAddToOrderNY"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add to Order"
+            android:text="@string/add_to_order"
             android:background="@color/design_default_color_primary"
             android:textColor="#FFFFFF" />
     </LinearLayout>
