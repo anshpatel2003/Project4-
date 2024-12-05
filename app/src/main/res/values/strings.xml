@@ -1,3 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">CorrectProject</string>
+    <string name="store_orders">Store Orders</string>
+    <string name="cancel_order">Cancel Order</string>
+    <string name="export_store_orders">Export Store Orders</string>
+    <string name="chicago_style_pizza">Chicago Style Pizza</string>
+    <string name="select_pizza_type">Select Pizza Type:</string>
+    <string name="select_size">Select Size:</string>
+    <string name="small">Small</string>
+    <string name="medium">Medium</string>
+    <string name="large">Large</string>
+    <string name="crust">Crust:</string>
+    <string name="available_toppings">Available Toppings</string>
+    <string name="selected_toppings">Selected Toppings</string>
+    <string name="pizza_price">Pizza Price $</string>
+    <string name="add_to_order">Add to Order</string>
+    <string name="add_topping">&gt;&gt;</string>
+    <string name="remove_topping">&lt;&lt;</string>
+    <string name="current_order">Current Order</string>
+    <string name="order_number">Order Number</string>
+    <string name="subtotal">Subtotal $</string>
+    <string name="sales_tax">Sales Tax $</string>
+    <string name="remove_pizza">Remove Pizza</string>
+    <string name="order_total">Order Total $</string>
+    <string name="place_order">Place Order</string>
+    <string name="clear_order">Clear Order</string>
+    <string name="app_name">Pizza Ordering App</string>
+    <string name="pizza_image">Pizza Image</string>
+    <string name="move_to_selected">&gt;&gt;</string> <!-- Escaped >> -->
+    <string name="move_to_available">&lt;&lt;</string> <!-- Escaped << -->
+    <string name="pizza_menu">Pizza Menu</string>
+    <string name="ny_style_pizza">NY Style Pizza</string>
+    <string name="order_placed">Orders Placed</string>
 </resources>
