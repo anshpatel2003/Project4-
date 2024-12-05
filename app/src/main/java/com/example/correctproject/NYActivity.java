@@ -23,7 +23,7 @@ public class NYActivity extends AppCompatActivity {
     private List<Topping> availableToppings, selectedToppings;
     private Pizza currentPizza;
     private final PizzaFactory pizzaFactory = new ChicagoPizza();
-    private Order currentOrder;
+    private Order order;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +76,9 @@ public class NYActivity extends AppCompatActivity {
                 } else {
                     selectedToppings.remove(topping);
                 }
-                updatePrice();
+                if(currentPizza instanceof BuildYourOwn) {
+                    updatePrice();
+                }
             });
             toppingsContainer.addView(checkBox);
         }
@@ -223,14 +225,24 @@ public class NYActivity extends AppCompatActivity {
             return;
         }
 
-        if (currentOrder == null) {
-            currentOrder = new Order();
+
+        Order order = StoreOrders.getInstance().getOrders().isEmpty() ? null : StoreOrders.getInstance().getOrders().get(StoreOrders.getInstance().getOrders().size() - 1);
+
+        if (StoreOrders.getInstance().getOrders().isEmpty()  || StoreOrders.getInstance().isOrderPlaced(order) == Boolean.TRUE) {
+            order = new Order(); // Create a new order
+            StoreOrders.getInstance().addOrder(order); // Add the new order
         }
 
-        currentOrder.addPizza(currentPizza);
-        StoreOrders storeOrders = StoreOrders.getInstance();
-        storeOrders.addOrder(currentOrder);
+        order = StoreOrders.getInstance().getOrders().get(StoreOrders.getInstance().getOrders().size() - 1);
+        order.addPizza(currentPizza);
+        // Reset current pizza
         showAlert("Success", "Pizza successfully added to the order!");
+        pizzaTypeSpinner.setSelection(0);
+        sizeRadioGroup.clearCheck();
+        priceTextView.setText("$0.00");
+        crustTextView.setText("");
+        //clear the toppings checkboxes
+
     }
 
     private void showAlert(String title, String message) {
