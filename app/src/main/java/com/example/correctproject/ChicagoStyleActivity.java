@@ -47,8 +47,8 @@ public class ChicagoStyleActivity extends AppCompatActivity {
         largeRadioButton = findViewById(R.id.rbLarge);
         crustTextView = findViewById(R.id.crustTextView);
         priceTextView = findViewById(R.id.priceTextView);
-        availableToppingsListView = findViewById(R.id.lvAvailableToppings);
-        selectedToppingsListView = findViewById(R.id.lvSelectedToppings);
+//        availableToppingsListView = findViewById(R.id.lvAvailableToppings);
+//        selectedToppingsListView = findViewById(R.id.lvSelectedToppings);
         addToppingButton = findViewById(R.id.btnAddTopping);
         removeToppingButton = findViewById(R.id.btnRemoveTopping);
         addToOrderButton = findViewById(R.id.btnAddToOrder);
