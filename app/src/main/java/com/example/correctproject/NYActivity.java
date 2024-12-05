@@ -228,6 +228,8 @@ public class NYActivity extends AppCompatActivity {
         }
 
         currentOrder.addPizza(currentPizza);
+        StoreOrders storeOrders = StoreOrders.getInstance();
+        storeOrders.addOrder(currentOrder);
         showAlert("Success", "Pizza successfully added to the order!");
     }
 
