@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/tvTitleNY"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New York Style Pizza"
+            android:textSize="36sp"
+            android:textColor="@color/black"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Pizza Type Spinner -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Pizza Type:"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="8dp" />
+
+        <Spinner
+            android:id="@+id/spinnerPizzaTypeNY"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Pizza Size Radio Group -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Size:"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="8dp" />
+
+        <RadioGroup
+            android:id="@+id/rgSizeNY"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <RadioButton
+                android:id="@+id/rbSmallNY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Small" />
+
+            <RadioButton
+                android:id="@+id/rbMediumNY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Medium" />
+
+            <RadioButton
+                android:id="@+id/rbLargeNY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Large" />
+        </RadioGroup>
+
+        <!-- Crust Display -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Crust:"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/etCrustNY"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:background="@android:color/transparent"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Pizza Image -->
+        <ImageView
+            android:id="@+id/ivPizzaNY"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="Pizza Image" />
+
+        <!-- Toppings List and Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp">
+
+            <!-- Available Toppings RecyclerView -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Available Toppings"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="8dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvAvailableToppings"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginBottom="8dp" />
+            </LinearLayout>
+
+            <!-- Add/Remove Buttons -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btnAddToppingNY"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text=">>" />
+
+                <Button
+                    android:id="@+id/btnRemoveToppingNY"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="arrows" />
+            </LinearLayout>
+
+            <!-- Selected Toppings RecyclerView -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Selected Toppings"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="8dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvSelectedToppings"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginBottom="8dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Pizza Price -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pizza Price $"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/etPriceNY"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:background="@android:color/transparent"
+            android:textColor="#000000"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Add to Order Button -->
+        <Button
+            android:id="@+id/btnAddToOrderNY"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add to Order"
+            android:background="@color/design_default_color_primary"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+</ScrollView>
