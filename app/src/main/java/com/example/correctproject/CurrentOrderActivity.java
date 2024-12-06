@@ -1,20 +1,19 @@
 package com.example.correctproject;
 
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.DecimalFormat;
 
 public class CurrentOrderActivity extends AppCompatActivity {
 
-    private ListView pizzaListView;
+    private RecyclerView pizzaRecyclerView;
     private EditText subtotalField;
     private EditText salesTaxField;
     private EditText orderTotalField;
@@ -24,6 +23,8 @@ public class CurrentOrderActivity extends AppCompatActivity {
     private static final double SALES_TAX_RATE = 0.07;
     private DecimalFormat df = new DecimalFormat("0.00");
 
+    private PizzaAdapter pizzaAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +32,7 @@ public class CurrentOrderActivity extends AppCompatActivity {
 
         // Initialize the views
         EditText orderNumberField = findViewById(R.id.orderNumberField);
-        pizzaListView = findViewById(R.id.pizzaListView);
+        pizzaRecyclerView = findViewById(R.id.pizzaRecyclerView);
         subtotalField = findViewById(R.id.subtotalField);
         salesTaxField = findViewById(R.id.salesTaxField);
         orderTotalField = findViewById(R.id.orderTotalField);
@@ -53,43 +54,42 @@ public class CurrentOrderActivity extends AppCompatActivity {
 
         // Set initial values
         orderNumberField.setText(String.valueOf(currentOrder.getNumber()));
-        updatePizzaListView();
+
+        // Set up RecyclerView
+        pizzaAdapter = new PizzaAdapter(currentOrder.getPizzas(), this::onPizzaRemoved);
+        pizzaRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        pizzaRecyclerView.setAdapter(pizzaAdapter);
+
+        // Update totals
+        updateTotals();
 
         // Set up event listeners
         removePizzaButton.setOnClickListener(view -> handleRemovePizza());
         placeOrderButton.setOnClickListener(view -> handlePlaceOrder());
         clearOrderButton.setOnClickListener(view -> handleCancelOrder());
+    }
 
-        // Set up ListView click listener for pizza removal
-        pizzaListView.setOnItemClickListener((adapterView, view, position, id) -> {
-            // Handle pizza selection if necessary
-        });
+    private void onPizzaRemoved(Pizza pizza) {
+        currentOrder.removePizza(pizza);
+        pizzaAdapter.notifyDataSetChanged();
+        updateTotals();
+        showToast("Pizza successfully removed from the order!");
     }
 
     private void handleRemovePizza() {
-        int selectedIndex = pizzaListView.getCheckedItemPosition();
-        if (selectedIndex != ListView.INVALID_POSITION) {
-            Pizza removedPizza = currentOrder.getPizzas().get(selectedIndex);
-            currentOrder.removePizza(removedPizza);
-            updatePizzaListView();
-            showToast("Pizza successfully removed from the order!");
-        } else {
-            showToast("No pizza selected to remove.");
-        }
+        showToast("Select a pizza to remove from the list.");
     }
 
     private void handlePlaceOrder() {
         storeOrders.updateOrderStatus(currentOrder, true);
-        updatePizzaListView();
-        Order newOrder = new Order();
-        storeOrders.addOrder(newOrder);
-        pizzaListView.setAdapter(null);
+        updateTotals();
+        pizzaAdapter.notifyDataSetChanged();
         showToast("Order placed successfully.");
     }
 
     private void handleCancelOrder() {
         currentOrder.getPizzas().clear();
-        pizzaListView.setAdapter(null);
+        pizzaAdapter.notifyDataSetChanged();
         updateTotals();
         showToast("The order has been cleared.");
     }
@@ -106,14 +106,5 @@ public class CurrentOrderActivity extends AppCompatActivity {
 
     private void showToast(String message) {
         Toast.makeText(CurrentOrderActivity.this, message, Toast.LENGTH_SHORT).show();
-    }
-
-    private void updatePizzaListView() {
-        ArrayAdapter<String> pizzaAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
-        for (Pizza pizza : currentOrder.getPizzas()) {
-            pizzaAdapter.add(pizza.toString());
-        }
-        pizzaListView.setAdapter(pizzaAdapter);
-        updateTotals();
     }
 }

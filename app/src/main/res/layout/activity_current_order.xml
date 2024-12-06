@@ -39,21 +39,14 @@
             android:enabled="false" />
     </LinearLayout>
 
-    <!-- ScrollView to wrap the ListView -->
-    <ScrollView
-        android:id="@+id/pizzaListScrollView"
+    <!-- ListView directly added without ScrollView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/pizzaRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
         app:layout_constraintTop_toBottomOf="@id/orderNumberContainer"
-        app:layout_constraintBottom_toTopOf="@id/priceContainer">
-
-        <ListView
-            android:id="@+id/pizzaListView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </ScrollView>
+        app:layout_constraintBottom_toTopOf="@id/priceContainer"/>
 
     <GridLayout
         android:id="@+id/priceContainer"

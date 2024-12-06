@@ -17,7 +17,8 @@
         android:textSize="24sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
 
     <!-- Spinner for order numbers -->
     <Spinner
@@ -27,7 +28,8 @@
         app:layout_constraintTop_toBottomOf="@id/titleText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:padding="8dp"/>
 
     <!-- EditText for displaying order total -->
     <EditText
@@ -39,6 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="20dp"
+        android:padding="8dp"
         android:hint="@string/order_total"/>
 
     <!-- ListView for displaying order details -->
@@ -50,7 +53,8 @@
         app:layout_constraintBottom_toTopOf="@id/cancelOrdersButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:padding="8dp"/>
 
     <!-- Button to cancel an order -->
     <Button
@@ -58,9 +62,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/cancel_order"
-        app:layout_constraintTop_toBottomOf="@id/ordersListView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginBottom="20dp"
+        android:padding="12dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
