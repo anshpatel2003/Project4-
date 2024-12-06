@@ -1,3 +1,9 @@
+/**
+ * Author Jeet Soni, Ansh Patel
+ * OrderPlacedActivity class
+ */
+
+
 package com.example.correctproject;
 
 import android.os.Bundle;
@@ -31,6 +37,12 @@ public class OrdersPlacedActivity extends AppCompatActivity {
 
     private static final double SALES_TAX_RATE = 0.07;
 
+    /**
+     * Initializes the UI components and sets up listeners for user interactions.
+     * It handles the selection of an order and the canceling of an order.
+     *
+     * @param savedInstanceState If the activity is being re-initialized, this contains the previous state data.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
