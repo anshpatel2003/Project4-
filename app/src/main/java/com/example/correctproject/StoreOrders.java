@@ -76,7 +76,7 @@ public class StoreOrders {
      * @return the placed status of the order, or null if the order is not found
      */
     public Boolean isOrderPlaced(Order order) {
-        return placedStatusMap.get(order); // Returns null if order is not found
+        return placedStatusMap.get(order);
     }
 
     /**

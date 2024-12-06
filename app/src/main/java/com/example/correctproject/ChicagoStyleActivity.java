@@ -54,7 +54,6 @@ public class ChicagoStyleActivity extends AppCompatActivity {
 
 
     private void initializeData() {
-        // Add a placeholder as the first item
         List<String> pizzaTypes = new ArrayList<>(Arrays.asList("Select a Pizza Type", "Deluxe", "BBQ Chicken", "Meatzza", "Build Your Own"));
 
         ArrayAdapter<String> pizzaTypeAdapter = new ArrayAdapter<>(this,
@@ -63,7 +62,6 @@ public class ChicagoStyleActivity extends AppCompatActivity {
         pizzaTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         pizzaTypeSpinner.setAdapter(pizzaTypeAdapter);
 
-        // Dynamically add CheckBox for each topping
         availableToppings = new ArrayList<>(Arrays.asList(Topping.values()));
         selectedToppings = new ArrayList<>();
 
@@ -86,7 +84,6 @@ public class ChicagoStyleActivity extends AppCompatActivity {
 
 
     private void setupListeners() {
-        // Listener for Pizza Type Spinner
         pizzaTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -98,22 +95,19 @@ public class ChicagoStyleActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {}
         });
 
-        // Listener for Size RadioGroup
         sizeRadioGroup.setOnCheckedChangeListener((group, checkedId) -> updatePizzaSize());
 
-        // Add to Order Button Listener
         addToOrderButton.setOnClickListener(v -> handleAddToOrder());
     }
 
     private void updatePizzaSelection() {
         String selectedType = (String) pizzaTypeSpinner.getSelectedItem();
         if (selectedType == null || selectedType.equals("Select a Pizza Type")) {
-            // Reset pizza details if placeholder is selected
             currentPizza = null;
             crustTextView.setText("");
-            pizzaImageView.setImageResource(android.R.color.transparent); // Clear the image
+            pizzaImageView.setImageResource(android.R.color.transparent);
             selectedToppings.clear();
-            setToppingsEditable(false); // Disable toppings by default
+            setToppingsEditable(false);
             for (int i = 0; i < toppingsContainer.getChildCount(); i++) {
                 CheckBox checkBox = (CheckBox) toppingsContainer.getChildAt(i);
                 checkBox.setChecked(false);
@@ -125,7 +119,7 @@ public class ChicagoStyleActivity extends AppCompatActivity {
         selectedToppings.clear();
         for (int i = 0; i < toppingsContainer.getChildCount(); i++) {
             CheckBox checkBox = (CheckBox) toppingsContainer.getChildAt(i);
-            checkBox.setChecked(false); // Clear all selections
+            checkBox.setChecked(false);
         }
 
         switch (selectedType) {
@@ -134,7 +128,7 @@ public class ChicagoStyleActivity extends AppCompatActivity {
                 crustTextView.setText(currentPizza.getCrust().toString());
                 updatePizzaToppings(currentPizza.getToppings());
                 pizzaImageView.setImageResource(R.drawable.deulxe);
-                setToppingsEditable(false); // Disable toppings
+                setToppingsEditable(false);
                 break;
 
             case "BBQ Chicken":
@@ -142,7 +136,7 @@ public class ChicagoStyleActivity extends AppCompatActivity {
                 crustTextView.setText(currentPizza.getCrust().toString());
                 updatePizzaToppings(currentPizza.getToppings());
                 pizzaImageView.setImageResource(R.drawable.bbqchicken);
-                setToppingsEditable(false); // Disable toppings
+                setToppingsEditable(false);
                 break;
 
             case "Meatzza":
@@ -150,14 +144,14 @@ public class ChicagoStyleActivity extends AppCompatActivity {
                 crustTextView.setText(currentPizza.getCrust().toString());
                 updatePizzaToppings(currentPizza.getToppings());
                 pizzaImageView.setImageResource(R.drawable.meatazza);
-                setToppingsEditable(false); // Disable toppings
+                setToppingsEditable(false);
                 break;
 
             case "Build Your Own":
                 currentPizza = pizzaFactory.createBuildYourOwn();
                 crustTextView.setText(currentPizza.getCrust().toString());
                 pizzaImageView.setImageResource(R.drawable.buildyourown);
-                setToppingsEditable(true); // Enable toppings
+                setToppingsEditable(true);
                 break;
         }
 
@@ -229,19 +223,17 @@ public class ChicagoStyleActivity extends AppCompatActivity {
         Order order = StoreOrders.getInstance().getOrders().isEmpty() ? null : StoreOrders.getInstance().getOrders().get(StoreOrders.getInstance().getOrders().size() - 1);
 
         if (StoreOrders.getInstance().getOrders().isEmpty()  || StoreOrders.getInstance().isOrderPlaced(order) == Boolean.TRUE) {
-            order = new Order(); // Create a new order
-            StoreOrders.getInstance().addOrder(order); // Add the new order
+            order = new Order();
+            StoreOrders.getInstance().addOrder(order);
         }
 
         order = StoreOrders.getInstance().getOrders().get(StoreOrders.getInstance().getOrders().size() - 1);
         order.addPizza(currentPizza);
-         // Reset current pizza
         showAlert("Success", "Pizza successfully added to the order!");
         pizzaTypeSpinner.setSelection(0);
         sizeRadioGroup.clearCheck();
         priceTextView.setText("$0.00");
         crustTextView.setText("");
-        //clear the toppings checkboxes
 
     }
 

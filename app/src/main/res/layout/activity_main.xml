@@ -9,7 +9,6 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- ImageView for Rutgers Scarlet Knights logo -->
         <ImageView
             android:id="@+id/imgRutgersLogo"
             android:layout_width="match_parent"
@@ -29,7 +28,6 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp" />
 
-        <!-- Button for Chicago Style Pizza -->
         <Button
             android:id="@+id/btnChicagoStyle"
             android:layout_width="match_parent"
@@ -38,7 +36,6 @@
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/red" />
 
-        <!-- Button for NY Style Pizza -->
         <Button
             android:id="@+id/btnNYStyle"
             android:layout_width="match_parent"
@@ -47,7 +44,6 @@
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/red" />
 
-        <!-- Button for Current Order -->
         <Button
             android:id="@+id/btnCurrentOrder"
             android:layout_width="match_parent"
@@ -56,7 +52,6 @@
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/red" />
 
-        <!-- Button for Orders Placed -->
         <Button
             android:id="@+id/btnOrdersPlaced"
             android:layout_width="match_parent"

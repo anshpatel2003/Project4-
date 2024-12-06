@@ -30,7 +30,6 @@ public class CurrentOrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current_order);
 
-        // Initialize the views
         EditText orderNumberField = findViewById(R.id.orderNumberField);
         pizzaRecyclerView = findViewById(R.id.pizzaRecyclerView);
         subtotalField = findViewById(R.id.subtotalField);
@@ -40,7 +39,6 @@ public class CurrentOrderActivity extends AppCompatActivity {
         Button placeOrderButton = findViewById(R.id.placeOrderButton);
         Button clearOrderButton = findViewById(R.id.clearOrderButton);
 
-        // Initialize StoreOrders and get the current order
         storeOrders = StoreOrders.getInstance();
 
         if (storeOrders.getOrders().isEmpty()) {
@@ -52,18 +50,14 @@ public class CurrentOrderActivity extends AppCompatActivity {
             return;
         }
 
-        // Set initial values
         orderNumberField.setText(String.valueOf(currentOrder.getNumber()));
 
-        // Set up RecyclerView
         pizzaAdapter = new PizzaAdapter(currentOrder.getPizzas(), this::onPizzaRemoved);
         pizzaRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         pizzaRecyclerView.setAdapter(pizzaAdapter);
 
-        // Update totals
         updateTotals();
 
-        // Set up event listeners
         removePizzaButton.setOnClickListener(view -> handleRemovePizza());
         placeOrderButton.setOnClickListener(view -> handlePlaceOrder());
         clearOrderButton.setOnClickListener(view -> handleCancelOrder());

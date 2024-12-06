@@ -25,13 +25,10 @@ public class OrdersPlacedActivity extends AppCompatActivity {
     private Button cancelOrderButton;
     private Button exportOrdersButton;
 
-    // StoreOrders singleton reference
     private StoreOrders storeOrders = StoreOrders.getInstance();
 
-    // Decimal formatter for currency
     private DecimalFormat df = new DecimalFormat("0.00");
 
-    // Constant for sales tax
     private static final double SALES_TAX_RATE = 0.07;
 
     @Override
@@ -39,16 +36,13 @@ public class OrdersPlacedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_placed);
 
-        // Initialize UI elements
         orderNumberSpinner = findViewById(R.id.orderNumberSpinner);
         orderTotalField = findViewById(R.id.orderTotalField);
         ordersListView = findViewById(R.id.ordersListView);
         cancelOrderButton = findViewById(R.id.cancelOrdersButton);
 
-        // Populate order numbers spinner
         populateOrderNumbers();
 
-        // Set up spinner listener
         orderNumberSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -57,11 +51,9 @@ public class OrdersPlacedActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                // Do nothing
             }
         });
 
-        // Set up button listeners
         cancelOrderButton.setOnClickListener(v -> handleCancelOrder());
     }
 
@@ -76,12 +68,10 @@ public class OrdersPlacedActivity extends AppCompatActivity {
             }
         }
 
-        // Set up adapter for the spinner
         ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, orderNumbers);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         orderNumberSpinner.setAdapter(adapter);
 
-        // Select first order if available
         if (!orderNumbers.isEmpty()) {
             orderNumberSpinner.setSelection(0);
             displaySelectedOrder();
@@ -102,15 +92,12 @@ public class OrdersPlacedActivity extends AppCompatActivity {
                         !order.getPizzas().isEmpty() &&
                         storeOrders.isOrderPlaced(order)) {
 
-                    // Create the order details string
                     ArrayList<String> orderDetails = new ArrayList<>();
                     orderDetails.add(formatOrderForList(order));
 
-                    // Set the ListView adapter
                     ArrayAdapter<String> listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, orderDetails);
                     ordersListView.setAdapter(listAdapter);
 
-                    // Set the order total field
                     double total = order.getTotalPrice() * (1 + SALES_TAX_RATE);
                     orderTotalField.setText(df.format(total));
                     break;
