@@ -9,6 +9,16 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <!-- ImageView for Rutgers Scarlet Knights logo -->
+        <ImageView
+            android:id="@+id/imgRutgersLogo"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/rutgers_scarlet_knights"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/rutgers_logo_description"
+            android:layout_marginBottom="16dp" />
+
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
@@ -25,7 +35,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/chicago_style_pizza"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/red" />
 
         <!-- Button for NY Style Pizza -->
         <Button
@@ -33,7 +44,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ny_style_pizza"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/red" />
 
         <!-- Button for Current Order -->
         <Button
@@ -41,7 +53,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/current_order"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/red" />
 
         <!-- Button for Orders Placed -->
         <Button
@@ -49,6 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/order_placed"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/red" />
     </LinearLayout>
 </ScrollView>
