@@ -22,7 +22,7 @@ public class NYActivity extends AppCompatActivity {
 
     private List<Topping> availableToppings, selectedToppings;
     private Pizza currentPizza;
-    private final PizzaFactory pizzaFactory = new ChicagoPizza();
+    private final PizzaFactory pizzaFactory = new NYPizza();
     private Order order;
 
     @Override
